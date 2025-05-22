@@ -221,7 +221,7 @@ export default async function Dashboard() {
           </a>
         </Button>
         <Button variant="ghost" className="flex-1 flex flex-col items-center py-2 h-16 min-w-16" asChild>
-          <a href="/more">
+          <a href="/roadmap">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-more-horizontal">
               <circle cx="12" cy="12" r="1" />
               <circle cx="19" cy="12" r="1" />
