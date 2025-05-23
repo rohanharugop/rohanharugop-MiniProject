@@ -74,52 +74,64 @@ export default function Roadmap() {
       </header>
 
       <main className="flex-1 p-4 md:p-6 overflow-auto">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Your Career Roadmap</h1>
           <p className="text-muted-foreground mb-12">
             Based on your profile and preferences, we've created a personalized learning roadmap to help you achieve your career goals.
           </p>
 
           {/* Roadmap Visualization */}
-          <div className="relative w-full h-[500px] mb-16">
+          <div className="relative w-full h-[600px] mb-16">
+            
             {/* SVG Road Path */}
             <svg 
               className="absolute inset-0 w-full h-full" 
-              viewBox="0 0 800 500" 
+              viewBox="0 0 1000 500" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
-              style={{ filter: "drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.15))" }}
-            >
+              style={{ filter: "drop-shadow(0px 2px 8px rgba(12, 1, 16, 0))" }}
+              >
+
               {/* Main curved path */}
               <path 
-                d="M50,250 C150,50 350,450 450,250 C550,50 750,250 750,250" 
+                d="M60,250 C180,60 400,440 500,250 C600,60 820,250 940,250" 
                 stroke="currentColor" 
-                strokeWidth="40" 
+                strokeWidth="90"
                 strokeLinecap="round"
-                className="text-muted/30 dark:text-muted/20"
+                className="text-muted/50 dark:text-muted/30"
               />
+              <path 
+                d="M60,250 C180,60 400,440 500,250 C600,60 820,250 940,250" 
+                stroke="rgba(12, 4, 47, 0.1)" 
+                strokeWidth="0"
+                strokeLinecap="square"
+                className="text-muted/10 dark:text-muted/10"
+              />
+              
               {/* Path border top */}
               <path 
-                d="M50,250 C150,50 350,450 450,250 C550,50 750,250 750,250" 
-                stroke="currentColor" 
-                strokeWidth="44" 
+                d="M60,250 C180,60 400,440 500,250 C600,60 820,250 940,250" 
+                stroke="rgba(27, 4, 47, 0.1)" 
+                strokeWidth="84"
                 strokeLinecap="round"
-                className="text-muted/10 dark:text-muted/10"
-                strokeDasharray="10,10"
+                className="text-muted/30 dark:text-muted/10"
+                strokeDasharray="12,12"
               />
+              
               {/* Path lines */}
               <path 
-                d="M50,250 C150,50 350,450 450,250 C550,50 750,250 750,250" 
-                stroke="white" 
-                strokeWidth="4" 
-                strokeLinecap="round"
-                strokeDasharray="15,15"
-                className="dark:stroke-neutral-800"
+               d="M60,250 C180,60 400,440 500,250 C600,60 820,250 940,250" 
+               stroke="rgba(216, 109, 15, 0.72)" 
+               strokeWidth="8"
+               strokeLinecap="round"
+               strokeDasharray="20,20"
+               className="dark:stroke-flex-600"
               />
+               
             </svg>
 
-            {/* Interactive Points */}
-            <div className="absolute top-[100px] left-[150px] transform -translate-x-1/2 -translate-y-1/2">
+            {/* Interactive Points with adjusted positions for wider roadmap */}
+            <div className="absolute top-[240px] left-[100px] transform -translate-x-1/2 -translate-y-1/2">
               <RoadmapNode 
                 number={1}
                 title="College Recommendations"
@@ -129,7 +141,7 @@ export default function Roadmap() {
               />
             </div>
 
-            <div className="absolute top-[350px] left-[400px] transform -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute top-[420px] left-[630px] transform -translate-x-1/2 -translate-y-1/2">
               <RoadmapNode 
                 number={2}
                 title="Online Courses"
@@ -139,7 +151,7 @@ export default function Roadmap() {
               />
             </div>
 
-            <div className="absolute top-[200px] left-[700px] transform -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute top-[300px] left-[1120px] transform -translate-x-1/2 -translate-y-1/2">
               <RoadmapNode 
                 number={3}
                 title="Build My Portfolio"
@@ -213,7 +225,7 @@ function RoadmapNode({
           <span className="absolute inset-0 rounded-full animate-ping bg-primary/50 opacity-75"></span>
         )}
       </Button>
-      <div className="mt-2 bg-card shadow-lg rounded-lg p-3 text-center w-40 border">
+      <div className="mt-2 bg-card shadow-lg rounded-lg p-3 text-center w-44 border">
         <h3 className="font-medium">{title}</h3>
         <p className="text-xs text-muted-foreground">{description}</p>
       </div>

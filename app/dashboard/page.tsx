@@ -1,8 +1,8 @@
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
+import { revalidatePath } from "next/cache"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { signOut } from "@/lib/actions"
 import { Home, User, BookOpen, Edit, LogOut } from "lucide-react"
 import ThemeToggle from "@/components/ThemeToggle"
 
@@ -24,6 +24,36 @@ export default async function Dashboard() {
     redirect("/questionnaire")
   }
 
+  // Server action for sign out
+  async function handleSignOut() {
+    "use server"
+    const supabase = createClient()
+    
+    try {
+      // Sign out from Supabase
+      await supabase.auth.signOut({ scope: 'global' })
+      
+      // Clear all possible session storage
+      const { cookies } = await import('next/headers')
+      const cookieStore = await cookies()
+      
+      // Remove Supabase session cookies
+      cookieStore.getAll().forEach(cookie => {
+        if (cookie.name.includes('supabase') || cookie.name.includes('sb-')) {
+          cookieStore.delete(cookie.name)
+        }
+      })
+      
+    } catch (error) {
+      console.error('Sign out error:', error)
+    }
+    
+    // Clear cache and force redirect
+    revalidatePath('/', 'layout')
+    revalidatePath('/dashboard', 'page')
+    redirect("/")
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       {/* Header */}
@@ -34,16 +64,8 @@ export default async function Dashboard() {
           </a>
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <form
-              action={async () => {
-                "use server"
-                const result = await signOut()
-                if (result.success) {
-                  redirect(result.redirectUrl)
-                }
-              }}
-            >
-              <Button variant="ghost" className="flex items-center gap-2">
+            <form action={handleSignOut}>
+              <Button type="submit" variant="ghost" className="flex items-center gap-2">
                 <LogOut size={18} />
                 <span className="hidden md:inline">Sign Out</span>
               </Button>

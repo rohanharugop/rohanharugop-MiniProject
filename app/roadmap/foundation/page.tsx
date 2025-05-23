@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function Specialization() {
+export default function Foundation() {
   const [submitted, setSubmitted] = useState(false)
   const [userInput, setUserInput] = useState("")
 
@@ -115,7 +115,7 @@ export default function Specialization() {
                   
                   <div className="flex justify-center mt-8">
                     <Button onClick={() => setSubmitted(false)}>
-                      Do this crap again
+                      Do this crap
                     </Button>
                   </div>
                 </div>
