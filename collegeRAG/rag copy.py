@@ -20,27 +20,28 @@ vectorstore = Chroma(
 )
 
 retriever = vectorstore.as_retriever()
-from langchain import hub
-prompt = hub.pull("rlm/rag-prompt")   
+# from langchain import hub
+# prompt = hub.pull("rlm/rag-prompt")   
+
+from langchain_core.prompts import PromptTemplate, HumanMessagePromptTemplate, ChatPromptTemplate
 
 
 custom_template_str = """You are an expert assistant helping users extract structured information about universities and colleges from a knowledge base.
 
-Based on the context provided, extract information and return it in the  as a list containing the following JSON format:
+Based on the context provided, extract information and return it in the following JSON format:
 
 College {
   name: string;
   CourseName: string;
   Fees: number;
   ExpectedKCETCutoff: number;
-  CompanyNames: string[];
+  Placement: string[];
 }
-- make sure that the return type is a **list of JSON objects**
-- Ensure that you do not return any other information apart from the list of JSON object
-- If the fees for a particular course is not explicilty mentioned in context, use fees of similar course instead.
+
+- Respond **only** with a valid JSON object.
 - Ensure all string values are enclosed in double quotes.
+- Return `null` for any field that is not found in the context.
 - Do not include any explanation or additional text.
-- Make sure that the CompanyNames field has no more than 3 items in it
 
 Context:
 {context}
@@ -48,18 +49,18 @@ Context:
 Question:
 {question}
 """
-retformat = """Based on the context provided, extract information and return as a list of JSON objects only as described below! Do not add any notes or additional information in the response:
-[
-    College {
-    name: string;
-    CourseName: string;
-    Fees: number;
-    ExpectedKCETCutoff: number;
-    Placement: string[];
-    }
-]
 
-"""
+
+
+# Create a new PromptTemplate and HumanMessagePromptTemplate
+new_prompt_template = PromptTemplate(input_variables=['context', 'question'], template=custom_template_str)
+new_human_message = HumanMessagePromptTemplate(prompt=new_prompt_template)
+
+# Create a new ChatPromptTemplate with the new message
+custom_prompt = ChatPromptTemplate(messages=[new_human_message])
+
+
+
 
 
 
@@ -86,7 +87,7 @@ retriever =vectorstore.as_retriever()
 rag_chain = RetrievalQA.from_chain_type(
     llm=llm,
     retriever=retriever,
-    chain_type_kwargs={"prompt": prompt},
+    chain_type_kwargs={"prompt": custom_prompt},
     return_source_documents=True
 )
 
@@ -121,9 +122,8 @@ def parse_partial_json_array(raw_json_str):
 
 
 def call_rag(question):
-    response = rag_chain.invoke({"query": custom_template_str + question})
+    response = rag_chain.invoke({"query": question})
     print('\nResponse from RAG/LLM: \n',response['result'])
-    # return(response['result'])
     return (parse_partial_json_array(response['result']))
 
 if __name__ == '__main__':
