@@ -1,0 +1,13 @@
+{
+    "stream": "Commerce",
+    "goal": "Business Administration",
+    "specialization": "General",
+    "title": "Foundation Pathway: Business Administration",
+    "items": [
+      { "id": "business_fund", "type": "course", "title": "Intro to Business Management" },
+      { "id": "marketing", "type": "course", "title": "Fundamentals of Marketing" },
+      { "id": "entrepreneurship", "type": "course", "title": "Startup Basics - Y Combinator" },
+      { "id": "proj_plan", "type": "project", "title": "Create a basic business plan" }
+    ]
+  }
+  

@@ -1,0 +1,8 @@
+backend/
+├── main.py                  # FastAPI app entry
+├── db.py                   # MongoDB connection
+├── models.py               # User & Checklist models
+├── routes/
+│   ├── user.py             # Routes to create user
+│   └── checklist.py        # Routes to assign & update checklist
+└── templates/              # Folder with JSON checklist templates

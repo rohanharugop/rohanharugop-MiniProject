@@ -1,0 +1,13 @@
+{
+    "stream": "Arts",
+    "goal": "History",
+    "specialization": "General",
+    "title": "Foundation Pathway: History",
+    "items": [
+      { "id": "indian_history", "type": "course", "title": "Indian History - Ancient to Modern" },
+      { "id": "world_history", "type": "course", "title": "World History CrashCourse" },
+      { "id": "read_biography", "type": "project", "title": "Read & summarize a historical biography" },
+      { "id": "timeline_proj", "type": "project", "title": "Create a historical timeline" }
+    ]
+  }
+  

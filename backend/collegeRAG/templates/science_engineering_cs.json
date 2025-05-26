@@ -1,0 +1,15 @@
+{
+    "stream": "Science",
+    "goal": "Engineering",
+    "specialization": "CS",
+    "title": "Foundation Pathway: Computer Science Engineering",
+    "items": [
+      { "id": "cs50", "type": "course", "title": "CS50: Introduction to Computer Science" },
+      { "id": "py4e", "type": "course", "title": "Python for Everybody (py4e)" },
+      { "id": "web_basics", "type": "course", "title": "Basics of HTML, CSS, and JS" },
+      { "id": "terminal_git", "type": "course", "title": "Learn Terminal & Git Basics" },
+      { "id": "proj_calc", "type": "project", "title": "Build a calculator web app" },
+      { "id": "proj_blog", "type": "project", "title": "Build a personal blog site" }
+    ]
+  }
+  

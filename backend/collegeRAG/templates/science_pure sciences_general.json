@@ -1,0 +1,13 @@
+{
+    "stream": "Science",
+    "goal": "Pure Sciences",
+    "specialization": "General",
+    "title": "Foundation Pathway: Pure Sciences",
+    "items": [
+      { "id": "basic_physics", "type": "course", "title": "Conceptual Physics - Khan Academy" },
+      { "id": "basic_chemistry", "type": "course", "title": "Intro to Chemistry - CrashCourse" },
+      { "id": "basic_bio", "type": "course", "title": "Biology Basics - Bozeman Science" },
+      { "id": "sci_proj", "type": "project", "title": "Science Fair Project (your choice)" }
+    ]
+  }
+  

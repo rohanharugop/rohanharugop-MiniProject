@@ -35,6 +35,13 @@ export async function updateProfile(formData: FormData) {
   }
 
   revalidatePath("/dashboard")
+  
+  // If the user is a 12th pass student, redirect to foundation pathway
+  if (education_status === "12th pass") {
+    return { success: true, redirectUrl: "/roadmap/foundation" }
+  }
+  
+  // Default redirect to dashboard
   return { success: true, redirectUrl: "/dashboard" }
 }
 

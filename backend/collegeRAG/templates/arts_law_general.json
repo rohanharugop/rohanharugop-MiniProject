@@ -1,0 +1,13 @@
+{
+    "stream": "Arts",
+    "goal": "Law",
+    "specialization": "General",
+    "title": "Foundation Pathway: Law",
+    "items": [
+      { "id": "intro_law", "type": "course", "title": "Introduction to Law - NALSAR" },
+      { "id": "const", "type": "course", "title": "Basics of Indian Constitution" },
+      { "id": "logic_reasoning", "type": "course", "title": "Logical Reasoning Practice" },
+      { "id": "proj_case", "type": "project", "title": "Summarize a famous legal case" }
+    ]
+  }
+  

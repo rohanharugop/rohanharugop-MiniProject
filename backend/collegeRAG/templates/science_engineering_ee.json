@@ -1,0 +1,14 @@
+{
+    "stream": "Science",
+    "goal": "Engineering",
+    "specialization": "EE",
+    "title": "Foundation Pathway: Electrical Engineering",
+    "items": [
+      { "id": "circuits", "type": "course", "title": "Intro to Circuits (Khan Academy)" },
+      { "id": "maths_fund", "type": "course", "title": "Mathematics for Engineers" },
+      { "id": "proj_breadboard", "type": "project", "title": "Make basic circuits on a breadboard" },
+      { "id": "arduino", "type": "course", "title": "Getting Started with Arduino" },
+      { "id": "proj_led", "type": "project", "title": "LED blinking project with Arduino" }
+    ]
+  }
+  

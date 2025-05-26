@@ -55,6 +55,7 @@ export function QuestionnaireForm() {
       const result = await updateProfile(formDataToSubmit)
 
       if (result.success && result.redirectUrl) {
+        // Navigate to the appropriate page based on education status
         router.push(result.redirectUrl)
       } else if (result.error) {
         setError(result.error)
@@ -125,6 +126,7 @@ export function QuestionnaireForm() {
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="12th pass" id="12th-pass" />
                     <Label htmlFor="12th-pass">Recent 12th Pass</Label>
+                    <span className="ml-2 text-xs text-gray-500">(Will navigate to Foundation Pathway)</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="college student" id="college-student" />
